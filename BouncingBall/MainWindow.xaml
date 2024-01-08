@@ -1,0 +1,96 @@
+﻿<Window x:Class="BouncingBall.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BouncingBall"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="400">
+    <Canvas>
+        <Ellipse x:Name="ball" HorizontalAlignment="Left" 
+                 Height="30" Margin="0" 
+                 Stroke="Black"
+                 VerticalAlignment="Top"
+                 Width="30" 
+                 Canvas.Left="0" 
+                 Canvas.Top="340">
+            <Ellipse.Fill>
+                <RadialGradientBrush GradientOrigin="0.269,0.324">
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.165"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+            <Ellipse.Triggers>
+                <EventTrigger RoutedEvent="Window.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingPath
+                                BeginTime="0:0:0"
+                                Storyboard.TargetName="ball"
+                                Storyboard.TargetProperty="(Canvas.Top)"
+                                Duration="0:0:3"
+                                DecelerationRatio="1"
+                                Source="Y">
+                                <DoubleAnimationUsingPath.PathGeometry>
+                                    <PathGeometry>
+                                        <PathFigure StartPoint="0,340">
+                                            <PolyBezierSegment Points="0,340 100,240 200,0"/>
+                                        </PathFigure>
+                                    </PathGeometry>
+                                </DoubleAnimationUsingPath.PathGeometry>
+                            </DoubleAnimationUsingPath>
+                            <DoubleAnimationUsingPath
+                                BeginTime="0:0:0"
+                                Storyboard.TargetName="ball"
+                                Storyboard.TargetProperty="(Canvas.Left)"
+                                Duration="0:0:3"
+                                DecelerationRatio="1"
+                                
+                                Source="X">
+                                <DoubleAnimationUsingPath.PathGeometry>
+                                    <PathGeometry>
+                                        <PathFigure StartPoint="0,340">
+                                            <PolyBezierSegment Points="0,340 100,240 200,0"/>
+                                        </PathFigure>
+                                    </PathGeometry>
+                                </DoubleAnimationUsingPath.PathGeometry>
+                            </DoubleAnimationUsingPath>
+                            <DoubleAnimationUsingPath
+                                BeginTime="0:0:3"
+                                Storyboard.TargetName="ball"
+                                Storyboard.TargetProperty="(Canvas.Top)"
+                                Duration="0:0:3"
+                                AccelerationRatio="1"
+                                
+                                Source="Y">
+                                <DoubleAnimationUsingPath.PathGeometry>
+                                    <PathGeometry>
+                                        <PathFigure StartPoint="200,0">
+                                            <PolyBezierSegment Points="200,0 280,100 360,340"/>
+                                        </PathFigure>
+                                    </PathGeometry>
+                                </DoubleAnimationUsingPath.PathGeometry>
+                            </DoubleAnimationUsingPath>
+                            <DoubleAnimationUsingPath
+                                BeginTime="0:0:3"
+                                Storyboard.TargetName="ball"
+                                Storyboard.TargetProperty="(Canvas.Left)"
+                                Duration="0:0:3"
+                                AccelerationRatio="1"
+                                
+                                Source="X">
+                                <DoubleAnimationUsingPath.PathGeometry>
+                                    <PathGeometry>
+                                        <PathFigure StartPoint="200,0">
+                                            <PolyBezierSegment Points="200,0 280,100 360,340"/>
+                                        </PathFigure>
+                                    </PathGeometry>
+                                </DoubleAnimationUsingPath.PathGeometry>
+                            </DoubleAnimationUsingPath>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Ellipse.Triggers>
+        </Ellipse>
+    </Canvas>
+</Window>
